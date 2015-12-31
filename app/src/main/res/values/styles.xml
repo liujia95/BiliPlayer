@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--红色-->
+    <style name="RedTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--状态栏颜色-->
+        <item name="colorPrimaryDark">@color/color_accent_pink</item>
+        <!-- 应用的主要色调，actionBar默认使用该颜色-->
+        <item name="colorPrimary">@color/color_accent_pink</item>
+    </style>
+</resources>

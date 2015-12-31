@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">BiliPlayer</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
+
+    <string name="tab_2">TAB 2</string>
+    <string name="tab_1">TAB 1</string>
+
+    <string name="home_tab_1">番剧</string>
+    <string name="home_tab_2">推荐</string>
+    <string name="home_tab_3">分区</string>
+    <string name="home_tab_4">关注</string>
+    <string name="home_tab_5">发现</string>
+</resources>

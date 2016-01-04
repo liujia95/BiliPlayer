@@ -6,5 +6,8 @@
         <item name="colorPrimaryDark">@color/color_accent_pink</item>
         <!-- 应用的主要色调，actionBar默认使用该颜色-->
         <item name="colorPrimary">@color/color_accent_pink</item>
+        <item name="android:textColor">@color/color_text_redtheme</item>
     </style>
+
+
 </resources>

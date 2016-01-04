@@ -1,4 +1,4 @@
-package me.liujia95.biliplayer.fragment;
+package me.liujia95.biliplayer.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import me.liujia95.biliplayer.fragment.LoadingUI;
 import me.liujia95.biliplayer.utils.UIUtils;
 
 /**
@@ -38,6 +39,15 @@ public abstract class BaseFragment extends Fragment {
         if (mLoadingUI != null) {
             mLoadingUI.loadData();
         }
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        if (mLoadingUI != null) {
+            mLoadingUI.loadData();
+        }
+
     }
 
     protected abstract View onInitSuccessView();

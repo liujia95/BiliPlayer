@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="6dp"
+                android:paddingLeft="@dimen/window_edge_width"
+                android:paddingRight="@dimen/window_edge_width"
+                android:paddingTop="6dp">
+
+    <ImageView
+        android:id="@+id/goin_and_see_iv_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_wanjie"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="6dp"
+        android:layout_toRightOf="@id/goin_and_see_iv_icon"
+        android:text="完结动画"
+        android:textColor="@color/color_text_redtheme"
+        android:textSize="20dp"/>
+
+    <Button
+        android:layout_width="80dp"
+        android:layout_height="34dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:background="#ccc"
+        android:text="进去看看"
+        android:textColor="@android:color/white"/>
+</RelativeLayout>

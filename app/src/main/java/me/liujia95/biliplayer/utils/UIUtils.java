@@ -9,11 +9,11 @@ import me.liujia95.biliplayer.base.BaseApplication;
 public class UIUtils {
 
     public static Context getContext() {
+
         return BaseApplication.getContext();
     }
 
     public static Resources getResources() {
-        LogUtils.d("UIUtils", getContext() + "");
         return getContext().getResources();
     }
 
@@ -55,4 +55,7 @@ public class UIUtils {
         return (int) (px / scale + .5f);
     }
 
+    public static void removeCallbacks(Runnable task) {
+        getMainHandler().removeCallbacks(task);
+    }
 }

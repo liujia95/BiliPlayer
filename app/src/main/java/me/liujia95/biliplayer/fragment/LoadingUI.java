@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import me.liujia95.biliplayer.R;
-import me.liujia95.biliplayer.utils.LogUtils;
 import me.liujia95.biliplayer.utils.UIUtils;
 
 /**
@@ -71,8 +70,6 @@ public abstract class LoadingUI extends FrameLayout {
 
 
     public void loadData() {
-        LogUtils.d("LoadingUI", "loadData state::" + mCurrentState);
-
         if (mCurrentState == STATE_LOADING || mCurrentState == STATE_SUCCESS) {
             return;
         }

@@ -11,4 +11,6 @@
     <string name="home_tab_3">分区</string>
     <string name="home_tab_4">关注</string>
     <string name="home_tab_5">发现</string>
+
+    <string name="url">http://192.168.198.173:8080//biliplayer-WEB-INFO//</string>
 </resources>

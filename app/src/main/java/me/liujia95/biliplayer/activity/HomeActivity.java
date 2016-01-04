@@ -62,7 +62,6 @@ public class HomeActivity extends BaseActivity {
             }
             @Override
             public void onPageSelected(int position) {
-                Toast.makeText(HomeActivity.this, "onPageSelected", Toast.LENGTH_SHORT).show();
                 FragmentFactory.getFragment(position).loadData();
             }
 
@@ -102,7 +101,6 @@ public class HomeActivity extends BaseActivity {
         public Fragment getItem(int position) {
             return FragmentFactory.getFragment(position);
         }
-
 
         @Override
         public CharSequence getPageTitle(int position) {

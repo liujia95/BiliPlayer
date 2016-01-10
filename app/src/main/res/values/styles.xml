@@ -1,13 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--红色-->
-    <style name="RedTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!--状态栏颜色-->
-        <item name="colorPrimaryDark">@color/color_accent_pink</item>
-        <!-- 应用的主要色调，actionBar默认使用该颜色-->
-        <item name="colorPrimary">@color/color_accent_pink</item>
-        <item name="android:textColor">@color/color_text_redtheme</item>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
     </style>
 
+    <!--红色主题-->
+    <style name="AppPinkTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/bili_color_pink</item>
+        <item name="colorPrimaryDark">@color/bili_color_pink</item>
+        <item name="android:windowBackground">@color/bili_color_light_gray</item>
+    </style>
+
+    <!--黑色-->
+    <style name="AppBlackTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/bili_color_black</item>
+        <item name="colorPrimaryDark">@color/bili_color_black</item>
+        <item name="android:windowBackground">@color/bili_color_black_windowbg</item>
+    </style>
 
 </resources>

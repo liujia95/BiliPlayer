@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:layout_marginTop="10dp"
+    android:clickable="true"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:paddingBottom="5dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="5dp">
+
+    <ImageView
+        android:id="@+id/item_title_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_lianzai"/>
+
+    <TextView
+        android:id="@+id/item_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@id/item_title_icon"
+        android:gravity="center_vertical"
+        android:text="新番连载"
+        android:textColor="#000"/>
+
+    <Button
+        android:layout_width="70dp"
+        android:layout_height="20dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:background="@color/bili_color_white"
+        android:text="今日更新2  >"
+        android:textColor="#666666"
+        android:textSize="10sp"/>
+
+</RelativeLayout>

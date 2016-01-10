@@ -1,23 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="260dp"
+                android:layout_height="185dp"
+                android:background="@color/bili_color_pink"
+                android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/leftmenu_iv_drawerbg"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#FB7299">
+            android:src="@drawable/bili_drawerbg_not_logined"/>
+    </FrameLayout>
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_switch_night"/>
-        </RelativeLayout>
+    <ImageView
+        android:id="@+id/leftmenu_iv_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="43dp"
+        android:src="@drawable/bili_default_avatar"/>
 
-    </LinearLayout>
-</ScrollView>
+    <ImageView
+        android:id="@+id/leftmenu_iv_switchtheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/leftmenu_iv_icon"
+        android:layout_marginRight="15dp"
+        android:src="@drawable/ic_switch_night"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/leftmenu_iv_icon"
+        android:layout_margin="15dp"
+        android:text="点击头像登录"
+        android:textColor="@color/bili_color_white"/>
+
+
+</RelativeLayout>

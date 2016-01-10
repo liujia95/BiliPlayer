@@ -1,16 +1,28 @@
 <resources>
     <string name="app_name">BiliPlayer</string>
     <string name="open">open</string>
-    <string name="close">close</string>
+    <string name="close">open</string>
 
-    <string name="tab_2">TAB 2</string>
-    <string name="tab_1">TAB 1</string>
-
-    <string name="home_tab_1">番剧</string>
-    <string name="home_tab_2">推荐</string>
-    <string name="home_tab_3">分区</string>
-    <string name="home_tab_4">关注</string>
-    <string name="home_tab_5">发现</string>
-
-    <string name="url">http://192.168.198.173:8080//biliplayer-WEB-INFO//</string>
+    <array name="home_tabs">
+        <item>番剧</item>
+        <item>推荐</item>
+        <item>分区</item>
+        <item>关注</item>
+        <item>发现</item>
+    </array>
+    <array name="fenqu">
+        <item>直 播</item>
+        <item>番 剧</item>
+        <item>动 画</item>
+        <item>音 乐</item>
+        <item>舞 蹈</item>
+        <item>游 戏</item>
+        <item>科 技</item>
+        <item>娱 乐</item>
+        <item>鬼 畜</item>
+        <item>电 影</item>
+        <item>电视剧</item>
+        <item>时 尚</item>
+        <item>游戏中心</item>
+    </array>
 </resources>

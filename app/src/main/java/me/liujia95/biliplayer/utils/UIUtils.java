@@ -3,6 +3,7 @@ package me.liujia95.biliplayer.utils;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Handler;
+import android.view.WindowManager;
 
 import me.liujia95.biliplayer.base.BaseApplication;
 
@@ -14,11 +15,15 @@ public class UIUtils {
     }
 
     public static Resources getResources() {
-        return getContext().getResources();
+        return BaseApplication.getContext().getResources();
     }
 
     public static String getString(int resId) {
         return getResources().getString(resId);
+    }
+
+    public static String[] getStringArray(int resId) {
+        return getResources().getStringArray(resId);
     }
 
     public static int getColor(int resId) {
@@ -41,6 +46,10 @@ public class UIUtils {
         getMainHandler().postDelayed(task, delayMillis);
     }
 
+    public static void removeCallbacks(Runnable task) {
+        getMainHandler().removeCallbacks(task);
+    }
+
     public static String getPackageName() {
         return getContext().getPackageName();
     }
@@ -55,7 +64,10 @@ public class UIUtils {
         return (int) (px / scale + .5f);
     }
 
-    public static void removeCallbacks(Runnable task) {
-        getMainHandler().removeCallbacks(task);
+    public static int getScreenWidth() {
+        WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
+        int width = wm.getDefaultDisplay().getWidth();
+        return width;
     }
+
 }

@@ -7,50 +7,51 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import me.liujia95.biliplayer.fragment.LoadingUI;
-import me.liujia95.biliplayer.utils.UIUtils;
-
 /**
- * Created by Administrator on 2015/12/29 15:54.
+ * Created by Administrator on 2016/1/9 20:56.
  */
 public abstract class BaseFragment extends Fragment {
 
-    private LoadingUI mLoadingUI;
+    protected View mRootView;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mLoadingUI = new LoadingUI(UIUtils.getContext()) {
-            @Override
-            protected View onLoadSuccessView() {
-                return onInitSuccessView();
-            }
-
-            @Override
-            protected ResultState onLoadData() {
-                return onStartLoadData();
-            }
-        };
-
-        return mLoadingUI;
+        mRootView = initView(inflater);
+        return mRootView;
     }
 
-    public void loadData() {
-        if (mLoadingUI != null) {
-            mLoadingUI.loadData();
+    public View getRootView() {
+        if (mRootView != null) {
+            return mRootView;
         }
+        return null;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        initData();
+        initListener();
         super.onActivityCreated(savedInstanceState);
-        if (mLoadingUI != null) {
-            mLoadingUI.loadData();
-        }
-
     }
 
-    protected abstract View onInitSuccessView();
+    /**
+     * @return
+     * @des 初始化view，需要子类复写
+     * @param inflater
+     */
+    protected abstract View initView(LayoutInflater inflater);
 
-    protected abstract LoadingUI.ResultState onStartLoadData();
+    /**
+     * @des 初始化数据
+     */
+    public void initData() {
+    }
+
+    /**
+     * @des 初始化事件
+     */
+    public void initListener() {
+    }
+
 }

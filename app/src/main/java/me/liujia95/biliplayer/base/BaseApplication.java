@@ -4,8 +4,6 @@ import android.app.Application;
 import android.content.Context;
 import android.os.Handler;
 
-import me.liujia95.biliplayer.utils.LogUtils;
-
 /**
  * Created by Administrator on 2015/12/29 15:44.
  */
@@ -31,7 +29,6 @@ public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        LogUtils.d("BaseApplication","onCreate");
         mContext = this;
         mMainThread = Thread.currentThread();
         mMainHandler = new Handler();

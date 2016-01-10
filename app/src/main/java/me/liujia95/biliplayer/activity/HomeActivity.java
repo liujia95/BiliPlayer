@@ -4,107 +4,142 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
-import android.widget.Toast;
+import android.widget.FrameLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 import me.liujia95.biliplayer.R;
 import me.liujia95.biliplayer.base.BaseActivity;
-import me.liujia95.biliplayer.factory.FragmentFactory;
+import me.liujia95.biliplayer.base.BaseFragment;
+import me.liujia95.biliplayer.fragment.FenquFragment;
+import me.liujia95.biliplayer.fragment.LeftMenuFragment;
+import me.liujia95.biliplayer.fragment.PanJuFragment;
 import me.liujia95.biliplayer.utils.UIUtils;
 
 public class HomeActivity extends BaseActivity {
 
-    private Toolbar   mToolbar;
-    private TabLayout mTabLayout;
-    private ViewPager mViewPager;
+    @InjectView(R.id.home_drawerlayout)
+    DrawerLayout mDrawerLayout;
+    @InjectView(R.id.home_fl_leftmenu)
+    FrameLayout  mFlLeftmenu;
+    @InjectView(R.id.home_toolbar)
+    Toolbar      mToolbar;
+    @InjectView(R.id.home_tablayout)
+    TabLayout    mTablayout;
+    @InjectView(R.id.home_viewpager)
+    ViewPager    mViewPager;
+
+    private String[] mTabsArray;
+
+    List<BaseFragment> mFragments;
+    private ActionBarDrawerToggle mToggle;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        ButterKnife.inject(this);
+        //初始化
         initToolbar();
         initDrawerLayout();
-        initViewPagerAndTabs();
+        initFragment();
+        //初始化事件
+        initListener();
+        //数据加载
         initData();
+
     }
 
+    /**
+     * 初始化toolbar
+     */
     private void initToolbar() {
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
-        setTitle(getString(R.string.app_name));
+        mToolbar.setTitle("BiliPlayer");
         mToolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
     }
 
+    /**
+     * 初始化抽屉
+     */
     private void initDrawerLayout() {
-        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.home_drawerlayout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, mToolbar, R.string.open, R.string.close);
-        toggle.syncState();
-        drawerLayout.setDrawerListener(toggle);
+        mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.open, R.string.close);
+        mDrawerLayout.setDrawerListener(mToggle);
+        mToggle.syncState();
+
+        mToolbar.setNavigationIcon(R.drawable.ic_navigation_drawer);
     }
 
-    private void initViewPagerAndTabs() {
-        mViewPager = (ViewPager) findViewById(R.id.viewPager);
-        mTabLayout = (TabLayout) findViewById(R.id.tabLayout);
-        mTabLayout.setTabTextColors(getResources().getColor(R.color.white_normal), getResources().getColor(R.color.white_select));
-
-        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                
-            }
-            @Override
-            public void onPageSelected(int position) {
-                FragmentFactory.getFragment(position).loadData();
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
-
-        mViewPager.setCurrentItem(1);
-        mViewPager.setCurrentItem(0);
+    /**
+     * 初始化左侧菜单
+     */
+    private void initFragment() {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(R.id.home_fl_leftmenu, new LeftMenuFragment());
+        ft.commit();
     }
 
-    List<String> mDatas = new ArrayList<>();
-
-    public void initData() {
-        for (int i = 0; i < 5; i++) {
-            mDatas.add("页面" + i);
-        }
-        mViewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
-        mTabLayout.setupWithViewPager(mViewPager);
+    /**
+     * 初始化事件
+     */
+    private void initListener() {
     }
 
-    class MyAdapter extends FragmentStatePagerAdapter {
+    /**
+     * 加载数据
+     */
+    private void initData() {
+        //获得tabs的标题
+        mTabsArray = UIUtils.getStringArray(R.array.home_tabs);
 
-        public MyAdapter(FragmentManager fm) {
+        //添加数据
+        mFragments = new ArrayList<>();
+        mFragments.add(new PanJuFragment());
+        mFragments.add(new PanJuFragment());
+        mFragments.add(new FenquFragment());
+        mFragments.add(new PanJuFragment());
+        mFragments.add(new PanJuFragment());
+
+        //tab和viewpager绑定
+        //给viewpager设置适配器
+        mViewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
+        mTablayout.setupWithViewPager(mViewPager);
+    }
+
+    /**
+     * viewpager的适配器
+     */
+    class ViewPagerAdapter extends FragmentPagerAdapter {
+
+        public ViewPagerAdapter(FragmentManager fm) {
             super(fm);
         }
 
         @Override
-        public int getCount() {
-            return mDatas.size();
+        public Fragment getItem(int position) {
+            return mFragments.get(position);
         }
 
-
         @Override
-        public Fragment getItem(int position) {
-            return FragmentFactory.getFragment(position);
+        public int getCount() {
+            return mFragments.size();
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
-            return UIUtils.getString(R.string.home_tab_1 + position);
+            return mTabsArray[position];
         }
     }
 }

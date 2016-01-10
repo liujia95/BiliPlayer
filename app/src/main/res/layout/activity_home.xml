@@ -8,45 +8,57 @@
     android:layout_height="match_parent"
     tools:context=".activity.HomeActivity">
 
-    <FrameLayout
-        android:id="@+id/home_fl_left"
-        android:layout_width="280dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="left"
-        android:background="#fff">
-    </FrameLayout>
-
-    <android.support.design.widget.CoordinatorLayout
-        android:id="@+id/coordinatorLayout"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <!--主要内容-->
+    <LinearLayout
+        android:fitsSystemWindows="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <android.support.design.widget.CoordinatorLayout
 
-        <android.support.design.widget.AppBarLayout
-            android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
-            <include
-                android:id="@+id/toolbar"
-                layout="@layout/include_toolbar"/>
+            <!--头部分-->
+            <android.support.design.widget.AppBarLayout
 
-            <android.support.design.widget.TabLayout
-                android:id="@+id/tabLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:tabIndicatorColor="@android:color/white"
-                app:tabIndicatorHeight="3dp"
-                app:tabSelectedTextColor="@android:color/white"
-                app:tabTextColor="@android:color/white"/>
-        </android.support.design.widget.AppBarLayout>
+                android:layout_height="wrap_content">
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/viewPager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
-    </android.support.design.widget.CoordinatorLayout>
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/home_toolbar"
+                    app:layout_scrollFlags="scroll|enterAlways"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <android.support.design.widget.TabLayout
+                    android:id="@+id/home_tablayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tabIndicatorColor="@color/bili_color_white"
+                    app:tabIndicatorHeight="3dp"
+                    app:tabSelectedTextColor="@color/bili_color_white_pressed"
+                    app:tabTextColor="@color/bili_color_white_normal"/>
+            </android.support.design.widget.AppBarLayout>
+
+
+            <!--身体部分-->
+            <android.support.v4.view.ViewPager
+                android:background="@color/bili_color_light_gray"
+                android:id="@+id/home_viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+        </android.support.design.widget.CoordinatorLayout>
+    </LinearLayout>
+
+    <!--左侧菜单-->
+    <FrameLayout
+        android:id="@+id/home_fl_leftmenu"
+        android:layout_width="260dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
+        android:background="@color/bili_color_white">
+    </FrameLayout>
 
 </android.support.v4.widget.DrawerLayout>

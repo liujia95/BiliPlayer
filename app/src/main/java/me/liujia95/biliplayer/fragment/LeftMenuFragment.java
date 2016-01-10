@@ -1,24 +1,29 @@
 package me.liujia95.biliplayer.fragment;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import me.liujia95.biliplayer.R;
+import me.liujia95.biliplayer.base.BaseFragment;
 import me.liujia95.biliplayer.utils.UIUtils;
 
 /**
- * Created by Administrator on 2015/12/29 15:47.
+ * Created by Administrator on 2016/1/9 22:53.
  */
-public class LeftMenuFragment  extends Fragment{
+public class LeftMenuFragment extends BaseFragment implements View.OnClickListener {
 
-    @Nullable
+
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return View.inflate(UIUtils.getContext(), R.layout.fragment_leftmenu,null);
+    protected View initView(LayoutInflater inflater) {
+        View view = LayoutInflater.from(UIUtils.getContext()).inflate(R.layout.fragment_leftmenu, null);
+        return view;
     }
 
+    @Override
+    public void initListener() {
+    }
+
+    @Override
+    public void onClick(View v) {
+    }
 }

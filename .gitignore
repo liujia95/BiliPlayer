@@ -1,6 +1,10 @@
+/app/*.log
 /.idea
-/BiliPlayer.iml
-/local.properties
+/build.gradle
+
 /.gradle
+/*.log
+/*.iml
 /app/*.iml
 /test
+/local.properties

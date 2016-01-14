@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <GridView
-        android:id="@+id/fenqu_gridview"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/fenqu_recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="800dp"
+        android:layout_height="match_parent"
         android:numColumns="3">
-    </GridView>
+    </android.support.v7.widget.RecyclerView>
 </LinearLayout>

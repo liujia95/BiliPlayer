@@ -15,7 +15,9 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".test.PartThreeActivity"/>
+        <activity
+            android:name=".activity.SearchActivity"
+            android:theme="@style/Transparent"/>
     </application>
 
 </manifest>

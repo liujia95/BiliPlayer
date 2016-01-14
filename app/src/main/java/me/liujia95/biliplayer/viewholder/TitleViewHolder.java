@@ -5,6 +5,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 import me.liujia95.biliplayer.R;
 import me.liujia95.biliplayer.bean.VideoInfoBean;
 
@@ -13,17 +15,21 @@ import me.liujia95.biliplayer.bean.VideoInfoBean;
  */
 public class TitleViewHolder extends RecyclerView.ViewHolder {
 
-    private TextView  mTv;
-    private ImageView mIcon;
+    @InjectView(R.id.item_title_icon)
+    ImageView mIcon;
+    @InjectView(R.id.item_title_tv)
+    TextView  mTv;
+
 
     public TitleViewHolder(View parent) {
         super(parent);
-        mTv = (TextView) parent.findViewById(R.id.item_title_tv);
-        mIcon = (ImageView) parent.findViewById(R.id.item_title_icon);
+        ButterKnife.inject(this,parent);
     }
+
 
     public void loadData(VideoInfoBean bean) {
         mTv.setText(bean.title1);
         mIcon.setImageResource(bean.icon1);
     }
+
 }

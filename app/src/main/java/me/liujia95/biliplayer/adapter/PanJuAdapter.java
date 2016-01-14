@@ -1,10 +1,13 @@
 package me.liujia95.biliplayer.adapter;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +20,7 @@ import me.liujia95.biliplayer.viewholder.LianZaiViewHolder;
 import me.liujia95.biliplayer.viewholder.LunboViewHolder;
 import me.liujia95.biliplayer.viewholder.TitleViewHolder;
 import me.liujia95.biliplayer.viewholder.TuiJianViewHolder;
+import me.liujia95.biliplayer.viewholder.WanJieViewHolder;
 
 /**
  * Created by Administrator on 2016/1/9 21:13.
@@ -29,6 +33,7 @@ public class PanJuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     private static final int TYPE_STAGGERED   = 3;
     private static final int TYPE_LIANZAI     = 4;
     private static final int TYPE_TUIJIAN     = 5;
+    private static final int TYPE_WANJIE      = 6;
 
 
     public List<VideoInfoBean> mDatas = new ArrayList<>();
@@ -51,6 +56,8 @@ public class PanJuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 return TYPE_LIANZAI;
             } else if (type == VideoInfoBean.TYPE_TUIJIAN) {
                 return TYPE_TUIJIAN;
+            } else if (type == VideoInfoBean.TYPE_WANJIE) {
+                return TYPE_WANJIE;
             }
             return TYPE_TITLE;
         }
@@ -59,31 +66,31 @@ public class PanJuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == TYPE_LUNBO) {
-            View view = LayoutInflater.from(UIUtils.getContext()).inflate(R.layout.item_lunbo, parent, false);
-            StaggeredGridLayoutManager.LayoutParams layoutParams = (StaggeredGridLayoutManager.LayoutParams) view.getLayoutParams();
-            layoutParams.setFullSpan(true);
-            view.setLayoutParams(layoutParams);
+            View view = getViewHolder(R.layout.item_lunbo, parent, true);
             return new LunboViewHolder(view);
         } else if (viewType == TYPE_TITLE) {
-            View view = LayoutInflater.from(UIUtils.getContext()).inflate(R.layout.item_title, parent, false);
-            StaggeredGridLayoutManager.LayoutParams layoutParams = (StaggeredGridLayoutManager.LayoutParams) view.getLayoutParams();
-            layoutParams.setFullSpan(true);
-            view.setLayoutParams(layoutParams);
+            View view = getViewHolder(R.layout.item_title, parent, true);
             return new TitleViewHolder(view);
         } else if (viewType == TYPE_LIANZAI) {
-            View view = LayoutInflater.from(UIUtils.getContext()).inflate(R.layout.item_lianzai, parent, false);
-            StaggeredGridLayoutManager.LayoutParams layoutParams = (StaggeredGridLayoutManager.LayoutParams) view.getLayoutParams();
-            layoutParams.setFullSpan(true);
-            view.setLayoutParams(layoutParams);
+            View view = getViewHolder(R.layout.item_lianzai, parent, true);
             return new LianZaiViewHolder(view);
+        } else if (viewType == TYPE_WANJIE) {
+            View view = getViewHolder(R.layout.item_wanjie, parent, true);
+            return new WanJieViewHolder(view);
         } else if (viewType == TYPE_TUIJIAN) {
-            View view = LayoutInflater.from(UIUtils.getContext()).inflate(R.layout.item_tuijian, parent, false);
-            StaggeredGridLayoutManager.LayoutParams layoutParams = (StaggeredGridLayoutManager.LayoutParams) view.getLayoutParams();
-            layoutParams.setFullSpan(false);
-            view.setLayoutParams(layoutParams);
+            View view = getViewHolder(R.layout.item_tuijian, parent, false);
             return new TuiJianViewHolder(view);
         }
         return null;
+    }
+
+    @NonNull
+    private View getViewHolder(int resource, ViewGroup parent, boolean isFullSpan) {
+        View view = LayoutInflater.from(UIUtils.getContext()).inflate(resource, parent, false);
+        StaggeredGridLayoutManager.LayoutParams layoutParams = (StaggeredGridLayoutManager.LayoutParams) view.getLayoutParams();
+        layoutParams.setFullSpan(isFullSpan);
+        view.setLayoutParams(layoutParams);
+        return view;
     }
 
     @Override
@@ -101,8 +108,26 @@ public class PanJuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             } else if (viewType == TYPE_LIANZAI) {
                 LianZaiViewHolder viewholder = (LianZaiViewHolder) holder;
                 viewholder.loadData(mDatas.get(position));
+            } else if (viewType == TYPE_WANJIE) {
+                WanJieViewHolder viewholder = (WanJieViewHolder) holder;
+
+                int screenWidth = UIUtils.getScreenWidth();
+                int myWidth = (screenWidth - UIUtils.dip2px(24)) / 3;
+                int height = (int) (myWidth / mDatas.get(position).ratio + 0.5f);
+
+                viewholder.mIvIcon.setLayoutParams(new LinearLayout.LayoutParams(myWidth, height));
+                viewholder.mIvIcon2.setLayoutParams(new LinearLayout.LayoutParams(myWidth, height));
+                viewholder.mIvIcon3.setLayoutParams(new LinearLayout.LayoutParams(myWidth, height));
+
+                viewholder.loadData(mDatas.get(position));
             } else if (viewType == TYPE_TUIJIAN) {
                 TuiJianViewHolder viewholder = (TuiJianViewHolder) holder;
+                //实现根据图片的宽度计算
+                int screenWidth = UIUtils.getScreenWidth();
+                int myWidth = (screenWidth - UIUtils.dip2px(16)) / 2;
+                int height = (int) (myWidth / mDatas.get(position).ratio + 0.5f);
+
+                viewholder.mIcon.setLayoutParams(new RelativeLayout.LayoutParams(myWidth, height));
                 viewholder.loadData(mDatas.get(position));
             }
         }

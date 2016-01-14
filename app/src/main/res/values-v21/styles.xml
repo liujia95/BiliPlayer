@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+
     <!--红色主题-->
     <style name="AppPinkTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/bili_color_pink</item>
         <item name="colorPrimaryDark">@color/bili_color_pink</item>
-        <item name="android:windowBackground">@color/bili_color_pink</item>
-        <item name="android:navigationBarColor">@color/bili_color_navigation</item>
-        <item name="android:statusBarColor">@color/bili_color_pink</item>
-        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:windowBackground">@color/bili_color_light_gray</item>
         <item name="android:windowTranslucentStatus">true</item>
+        <!--<item name="android:fitsSystemWindows">true</item>-->
     </style>
 
     <!--黑色-->
@@ -20,6 +19,7 @@
         <item name="android:navigationBarColor">@color/bili_color_navigation</item>
         <item name="android:windowTranslucentNavigation">true</item>
         <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:fitsSystemWindows">true</item>
     </style>
 
 </resources>

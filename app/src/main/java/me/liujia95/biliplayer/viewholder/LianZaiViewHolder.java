@@ -5,6 +5,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 import me.liujia95.biliplayer.R;
 import me.liujia95.biliplayer.bean.VideoInfoBean;
 
@@ -13,32 +15,36 @@ import me.liujia95.biliplayer.bean.VideoInfoBean;
  */
 public class LianZaiViewHolder extends RecyclerView.ViewHolder {
 
-    private ImageView mIcon;
-    private TextView  mSeenum;
-    private TextView  mTitle;
-    private TextView  mNumber;
-    private TextView  mDate;
-    private ImageView mIcon2;
-    private TextView  mSeenum2;
-    private TextView  mTitle2;
-    private TextView  mNumber2;
-    private TextView  mDate2;
+
+    @InjectView(R.id.item_lianzai_icon)
+    ImageView mIcon;
+    @InjectView(R.id.item_lianzai_seenum)
+    TextView mSeenum;
+    @InjectView(R.id.item_lianzai_title)
+    TextView mTitle;
+    @InjectView(R.id.item_lianzai_number)
+    TextView mNumber;
+    @InjectView(R.id.item_lianzai_date)
+    TextView mDate;
+    @InjectView(R.id.item_lianzai_icon2)
+    ImageView mIcon2;
+    @InjectView(R.id.item_lianzai_seenum2)
+    TextView mSeenum2;
+    @InjectView(R.id.item_lianzai_title2)
+    TextView mTitle2;
+    @InjectView(R.id.item_lianzai_number2)
+    TextView mNumber2;
+    @InjectView(R.id.item_lianzai_date2)
+    TextView mDate2;
 
     public LianZaiViewHolder(View parent) {
         super(parent);
-        mIcon = (ImageView) parent.findViewById(R.id.item_lianzai_icon);
-        mSeenum = (TextView) parent.findViewById(R.id.item_lianzai_seenum);
-        mTitle = (TextView) parent.findViewById(R.id.item_lianzai_title);
-        mNumber = (TextView) parent.findViewById(R.id.item_lianzai_number);
-        mDate = (TextView) parent.findViewById(R.id.item_lianzai_date);
-        mIcon2 = (ImageView) parent.findViewById(R.id.item_lianzai_icon2);
-        mSeenum2 = (TextView) parent.findViewById(R.id.item_lianzai_seenum2);
-        mTitle2 = (TextView) parent.findViewById(R.id.item_lianzai_title2);
-        mNumber2 = (TextView) parent.findViewById(R.id.item_lianzai_number2);
-        mDate2 = (TextView) parent.findViewById(R.id.item_lianzai_date2);
+        ButterKnife.inject(this,parent);
     }
 
+
     public void loadData(VideoInfoBean bean) {
+
         mIcon.setImageResource(bean.icon1);
         mSeenum.setText(bean.seeNum1);
         mTitle.setText(bean.title1);

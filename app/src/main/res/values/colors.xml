@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <color name="bili_color_transparent">#9000</color>
     <color name="bili_color_navigation">#22000000</color>
     <color name="bili_color_white">#ffffff</color>
+    <color name="bili_color_gray">#99999999</color>
+
+    <color name="bili_color_select">#22000000</color>
 
     <color name="bili_color_item_select">#66666666</color>
     <!--粉色主题-->

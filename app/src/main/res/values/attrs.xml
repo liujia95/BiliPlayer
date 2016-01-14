@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 宽高比布局自定义属性 -->
+    <declare-styleable name="RatioLayout">
+
+        <!-- 宽高比 -->
+        <attr name="ratio" format="float"/>
+
+        <!-- 相对width height -->
+        <attr name="relative">
+            <enum name="width" value="0"/>
+            <enum name="height" value="1"/>
+        </attr>
+    </declare-styleable>
+</resources>

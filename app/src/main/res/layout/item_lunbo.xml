@@ -1,23 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-    <me.liujia95.biliplayer.view.MyViewPager
-        android:id="@+id/lunbo_viewpager"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:orientation="vertical">
-    </me.liujia95.biliplayer.view.MyViewPager>
+        android:layout_height="120dp">
 
-    <LinearLayout
-        android:id="@+id/lunbo_point_container"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_margin="8dp"
-        android:orientation="horizontal">
-    </LinearLayout>
-</RelativeLayout>
+        <me.liujia95.biliplayer.view.MyViewPager
+            android:id="@+id/lunbo_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:orientation="vertical">
+        </me.liujia95.biliplayer.view.MyViewPager>
+
+        <LinearLayout
+            android:id="@+id/lunbo_point_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="8dp"
+            android:orientation="horizontal">
+        </LinearLayout>
+    </RelativeLayout>
+
+    <include layout="@layout/layout_bangumi"/>
+</LinearLayout>

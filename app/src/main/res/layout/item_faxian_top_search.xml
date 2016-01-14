@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_margin="16dp"
+              android:background="@color/bili_color_white">
+
+    <TextView
+    android:id="@+id/faxian_top_search"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerVertical="true"
+    android:layout_weight="1"
+    android:drawableLeft="@drawable/ic_hint_search"
+    android:drawablePadding="5dp"
+    android:gravity="center_vertical"
+    android:padding="6dp"
+    android:text="@string/search_prompt"
+    android:textColor="#66000000"
+    android:textSize="14sp"/>
+
+    <ImageView
+        android:background="@drawable/ripple_bg_white"
+        android:id="@+id/faxian_top_scan"
+        android:layout_width="40dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:scaleType="center"
+        android:src="@drawable/ic_scan"/>
+
+</LinearLayout>

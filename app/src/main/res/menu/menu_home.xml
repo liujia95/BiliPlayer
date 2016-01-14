@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_game"
+        android:icon="@drawable/ic_menu_top_game_center"
+        android:title="游戏"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/action_download"
+        android:icon="@drawable/ic_toolbar_menu_download"
+        android:title="下载"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/ic_toolbar_menu_search"
+        android:title="查询"
+        app:showAsAction="always"/>
+</menu>

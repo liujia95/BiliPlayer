@@ -17,6 +17,25 @@
         <item name="colorPrimary">@color/bili_color_black</item>
         <item name="colorPrimaryDark">@color/bili_color_black</item>
         <item name="android:windowBackground">@color/bili_color_black_windowbg</item>
+
     </style>
 
+
+    <!--条目的样式-->
+    <style name="LeftMenuItemStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:clickable">true</item>
+        <item name="android:background">@drawable/item_bg_selector</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingLeft">15dp</item>
+        <item name="android:paddingTop">10dp</item>
+    </style>
+
+    <style name="Transparent" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@color/bili_color_transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="colorPrimaryDark">@color/bili_color_white</item>
+    </style>
 </resources>

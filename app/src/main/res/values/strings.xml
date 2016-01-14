@@ -2,6 +2,9 @@
     <string name="app_name">BiliPlayer</string>
     <string name="open">open</string>
     <string name="close">open</string>
+    <string name="home">首页</string>
+
+    <string name="search_prompt">搜索视频、番剧、up主或av号</string>
 
     <array name="home_tabs">
         <item>番剧</item>

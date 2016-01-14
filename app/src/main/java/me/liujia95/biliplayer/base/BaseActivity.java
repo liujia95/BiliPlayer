@@ -21,5 +21,6 @@ public class BaseActivity extends AppCompatActivity {
 //        }
         //这里其实可以通过values-v19 的sytle.xml里设置windowTranslucentStatus
         //属性为true来进行设置，但是在某些手机会不起效，所以采用代码的形式进行设置
+
     }
 }

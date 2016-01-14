@@ -1,16 +1,20 @@
 package me.liujia95.biliplayer.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
-import android.widget.FrameLayout;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,17 +24,15 @@ import butterknife.InjectView;
 import me.liujia95.biliplayer.R;
 import me.liujia95.biliplayer.base.BaseActivity;
 import me.liujia95.biliplayer.base.BaseFragment;
+import me.liujia95.biliplayer.fragment.FaxianFragment;
 import me.liujia95.biliplayer.fragment.FenquFragment;
-import me.liujia95.biliplayer.fragment.LeftMenuFragment;
 import me.liujia95.biliplayer.fragment.PanJuFragment;
 import me.liujia95.biliplayer.utils.UIUtils;
 
-public class HomeActivity extends BaseActivity {
+public class HomeActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     @InjectView(R.id.home_drawerlayout)
     DrawerLayout mDrawerLayout;
-    @InjectView(R.id.home_fl_leftmenu)
-    FrameLayout  mFlLeftmenu;
     @InjectView(R.id.home_toolbar)
     Toolbar      mToolbar;
     @InjectView(R.id.home_tablayout)
@@ -53,7 +55,6 @@ public class HomeActivity extends BaseActivity {
         //初始化
         initToolbar();
         initDrawerLayout();
-        initFragment();
         //初始化事件
         initListener();
         //数据加载
@@ -68,6 +69,7 @@ public class HomeActivity extends BaseActivity {
         setSupportActionBar(mToolbar);
         mToolbar.setTitle("BiliPlayer");
         mToolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
+
     }
 
     /**
@@ -79,16 +81,9 @@ public class HomeActivity extends BaseActivity {
         mToggle.syncState();
 
         mToolbar.setNavigationIcon(R.drawable.ic_navigation_drawer);
-    }
 
-    /**
-     * 初始化左侧菜单
-     */
-    private void initFragment() {
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
-        ft.replace(R.id.home_fl_leftmenu, new LeftMenuFragment());
-        ft.commit();
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
     }
 
     /**
@@ -104,18 +99,81 @@ public class HomeActivity extends BaseActivity {
         //获得tabs的标题
         mTabsArray = UIUtils.getStringArray(R.array.home_tabs);
 
-        //添加数据
+        //添加fragment
         mFragments = new ArrayList<>();
         mFragments.add(new PanJuFragment());
         mFragments.add(new PanJuFragment());
         mFragments.add(new FenquFragment());
         mFragments.add(new PanJuFragment());
-        mFragments.add(new PanJuFragment());
+        mFragments.add(new FaxianFragment());
 
         //tab和viewpager绑定
         //给viewpager设置适配器
         mViewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
         mTablayout.setupWithViewPager(mViewPager);
+    }
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.home_drawerlayout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_home, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_game:
+                Toast.makeText(HomeActivity.this, item.getTitle(), Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.action_search:
+                Intent intent = new Intent(this, SearchActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.action_download:
+                Toast.makeText(HomeActivity.this, item.getTitle(), Toast.LENGTH_SHORT).show();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if (id == R.id.nav_home) {
+            // Handle the camera action
+        } else if (id == R.id.nav_download) {
+
+        } else if (id == R.id.nav_start) {
+
+        } else if (id == R.id.nav_history) {
+
+        } else if (id == R.id.nav_people) {
+
+        } else if (id == R.id.nav_shop) {
+
+        } else if (id == R.id.nav_color) {
+
+        } else if (id == R.id.nav_app) {
+
+        } else if (id == R.id.nav_settings) {
+
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.home_drawerlayout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
     }
 
     /**

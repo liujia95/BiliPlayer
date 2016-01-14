@@ -10,12 +10,11 @@ import me.liujia95.biliplayer.base.BaseApplication;
 public class UIUtils {
 
     public static Context getContext() {
-
         return BaseApplication.getContext();
     }
 
     public static Resources getResources() {
-        return BaseApplication.getContext().getResources();
+        return getContext().getResources();
     }
 
     public static String getString(int resId) {

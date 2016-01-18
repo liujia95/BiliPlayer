@@ -16,6 +16,7 @@ import me.liujia95.biliplayer.R;
 import me.liujia95.biliplayer.bean.VideoInfoBean;
 import me.liujia95.biliplayer.data.PanJuData;
 import me.liujia95.biliplayer.utils.UIUtils;
+import me.liujia95.biliplayer.viewholder.FenleiViewHolder;
 import me.liujia95.biliplayer.viewholder.LianZaiViewHolder;
 import me.liujia95.biliplayer.viewholder.LunboViewHolder;
 import me.liujia95.biliplayer.viewholder.TitleViewHolder;
@@ -30,7 +31,7 @@ public class PanJuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     private static final int TYPE_LUNBO       = 0;
     private static final int TYPE_NORMAL_LIST = 1;
     private static final int TYPE_TITLE       = 2;
-    private static final int TYPE_STAGGERED   = 3;
+    private static final int TYPE_FENLEI      = 3;
     private static final int TYPE_LIANZAI     = 4;
     private static final int TYPE_TUIJIAN     = 5;
     private static final int TYPE_WANJIE      = 6;
@@ -58,6 +59,8 @@ public class PanJuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 return TYPE_TUIJIAN;
             } else if (type == VideoInfoBean.TYPE_WANJIE) {
                 return TYPE_WANJIE;
+            } else if (type == VideoInfoBean.TYPE_FENLEI) {
+                return TYPE_FENLEI;
             }
             return TYPE_TITLE;
         }
@@ -77,6 +80,9 @@ public class PanJuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         } else if (viewType == TYPE_WANJIE) {
             View view = getViewHolder(R.layout.item_wanjie, parent, true);
             return new WanJieViewHolder(view);
+        } else if (viewType == TYPE_FENLEI) {
+            View view = getViewHolder(R.layout.item_fenlei, parent, true);
+            return new FenleiViewHolder(view);
         } else if (viewType == TYPE_TUIJIAN) {
             View view = getViewHolder(R.layout.item_tuijian, parent, false);
             return new TuiJianViewHolder(view);
@@ -119,6 +125,9 @@ public class PanJuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 viewholder.mIvIcon2.setLayoutParams(new LinearLayout.LayoutParams(myWidth, height));
                 viewholder.mIvIcon3.setLayoutParams(new LinearLayout.LayoutParams(myWidth, height));
 
+                viewholder.loadData(mDatas.get(position));
+            }else if(viewType == TYPE_FENLEI){
+                FenleiViewHolder viewholder = (FenleiViewHolder) holder;
                 viewholder.loadData(mDatas.get(position));
             } else if (viewType == TYPE_TUIJIAN) {
                 TuiJianViewHolder viewholder = (TuiJianViewHolder) holder;

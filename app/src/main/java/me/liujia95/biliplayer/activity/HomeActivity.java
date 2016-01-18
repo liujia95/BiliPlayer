@@ -52,12 +52,9 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         setContentView(R.layout.activity_home);
 
         ButterKnife.inject(this);
-        //初始化
         initToolbar();
         initDrawerLayout();
-        //初始化事件
         initListener();
-        //数据加载
         initData();
 
     }

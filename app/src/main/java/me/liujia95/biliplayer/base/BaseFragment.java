@@ -1,57 +1,67 @@
 package me.liujia95.biliplayer.base;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
+
+import me.liujia95.biliplayer.fragment.LoadingUI;
+import me.liujia95.biliplayer.utils.UIUtils;
 
 /**
  * Created by Administrator on 2016/1/9 20:56.
  */
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment extends ParentFragment {
 
-    protected View mRootView;
 
-    @Nullable
+    private LoadingUI mLoadingUI;
+
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mRootView = initView(inflater);
-        return mRootView;
-    }
+    protected View initView(LayoutInflater inflater) {
+        if (mLoadingUI == null)
+        {
+            mLoadingUI = new LoadingUI(UIUtils.getContext()) {
 
-    public View getRootView() {
-        if (mRootView != null) {
-            return mRootView;
+                @Override
+                protected ResultState onLoadData()
+                {
+                    return onStartLoadData();
+                }
+
+                @Override
+                protected View onLoadSuccessView()
+                {
+                    return onInitSuccessView();
+                }
+            };
         }
-        return null;
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        initData();
-        initListener();
-        super.onActivityCreated(savedInstanceState);
-    }
-
-    /**
-     * @return
-     * @des 初始化view，需要子类复写
-     * @param inflater
-     */
-    protected abstract View initView(LayoutInflater inflater);
-
-    /**
-     * @des 初始化数据
-     */
-    public void initData() {
+        else
+        {
+            // 移除view
+            ViewParent parent = mLoadingUI.getParent();
+            // ViewGroup
+            if (parent instanceof ViewGroup)
+            {
+                ((ViewGroup) parent).removeView(mLoadingUI);
+            }
+        }
+        return mLoadingUI;
     }
 
     /**
-     * @des 初始化事件
+     * 加载数据的方法
      */
-    public void initListener() {
+    public void loadData()
+    {
+        if (mLoadingUI != null)
+        {
+            // 去网络加载数据--->
+            mLoadingUI.loadData();
+        }
     }
 
+    protected abstract View onInitSuccessView();
+
+
+    protected abstract LoadingUI.ResultState onStartLoadData();
 }

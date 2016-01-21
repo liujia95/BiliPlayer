@@ -10,14 +10,14 @@ import java.util.List;
 
 import me.liujia95.biliplayer.R;
 import me.liujia95.biliplayer.adapter.FenquAdapter;
-import me.liujia95.biliplayer.base.BaseFragment;
+import me.liujia95.biliplayer.base.ParentFragment;
 import me.liujia95.biliplayer.bean.FenquBean;
 import me.liujia95.biliplayer.utils.UIUtils;
 
 /**
  * Created by Administrator on 2016/1/10 20:46.
  */
-public class FenquFragment extends BaseFragment {
+public class FenquFragment extends ParentFragment {
 
     private RecyclerView    mRecyclerView;
     private String[]        mFenquArray;

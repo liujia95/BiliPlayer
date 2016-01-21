@@ -126,7 +126,7 @@ public class PanJuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 viewholder.mIvIcon3.setLayoutParams(new LinearLayout.LayoutParams(myWidth, height));
 
                 viewholder.loadData(mDatas.get(position));
-            }else if(viewType == TYPE_FENLEI){
+            } else if (viewType == TYPE_FENLEI) {
                 FenleiViewHolder viewholder = (FenleiViewHolder) holder;
                 viewholder.loadData(mDatas.get(position));
             } else if (viewType == TYPE_TUIJIAN) {

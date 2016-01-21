@@ -31,7 +31,6 @@ dependencies {
     compile 'com.android.support:cardview-v7:22.2.1'
     compile 'com.android.support:design:22.2.1'
     compile 'com.google.code.gson:gson:2.2.4'
-    compile 'com.squareup.okhttp:okhttp:2.0.0'
-    compile 'com.squareup.okio:okio:1.6.0'
     compile 'com.jakewharton:butterknife:5.1.1'
+    compile 'com.jiechic.library:xUtils:2.6.14'
 }

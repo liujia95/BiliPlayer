@@ -27,23 +27,20 @@ public class LunboViewHolder extends RecyclerView.ViewHolder {
     @InjectView(R.id.lunbo_point_container)
     LinearLayout mPointContainer;
 
-    private List<Integer> mDatas;
-
     private AutoBroadcastPicTask mAutoTask;
     private LunboAdapter         mAdapter;
 
+    private final List<Integer> mDatas;
+
     public LunboViewHolder(View parent) {
         super(parent);
-        ButterKnife.inject(this,parent);
+        ButterKnife.inject(this, parent);
 
-        //添加假数据
         mDatas = PanJuData.createLunboDatas();
 
         initListener();
 
-
-        mAdapter = new LunboAdapter();
-
+        //初始化适配器
         if (mAdapter == null) {
             mAdapter = new LunboAdapter();
         }
@@ -77,6 +74,7 @@ public class LunboViewHolder extends RecyclerView.ViewHolder {
         mAutoTask.start();
     }
 
+
     /**
      * 加载数据
      */
@@ -93,7 +91,6 @@ public class LunboViewHolder extends RecyclerView.ViewHolder {
         public void run() {
             int currentItem = mViewpager.getCurrentItem();
             mViewpager.setCurrentItem(++currentItem);
-
             UIUtils.postDelayed(this, 2000);
         }
 
@@ -189,8 +186,11 @@ public class LunboViewHolder extends RecyclerView.ViewHolder {
             position = position % mDatas.size();
 
             ImageView iv = new ImageView(UIUtils.getContext());
+
             iv.setScaleType(ImageView.ScaleType.FIT_XY);
+
             iv.setImageResource(R.drawable.lunbo_01 + position);
+
             container.addView(iv);
             return iv;
         }

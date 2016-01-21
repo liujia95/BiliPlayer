@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">BiliPlayer</string>
+
+    <string name="urlstring">http://www.bilibili.com/index/</string>
+
     <string name="open">open</string>
     <string name="close">open</string>
     <string name="home">首页</string>

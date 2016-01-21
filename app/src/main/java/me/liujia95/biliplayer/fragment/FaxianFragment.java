@@ -8,13 +8,13 @@ import android.view.View;
 import butterknife.InjectView;
 import me.liujia95.biliplayer.R;
 import me.liujia95.biliplayer.adapter.FaxianAdapter;
-import me.liujia95.biliplayer.base.BaseFragment;
+import me.liujia95.biliplayer.base.ParentFragment;
 import me.liujia95.biliplayer.utils.UIUtils;
 
 /**
  * Created by Administrator on 2016/1/14 16:03.
  */
-public class FaxianFragment extends BaseFragment {
+public class FaxianFragment extends ParentFragment {
 
     @InjectView(R.id.faxian_recyclerview)
     RecyclerView mRecyclerView;

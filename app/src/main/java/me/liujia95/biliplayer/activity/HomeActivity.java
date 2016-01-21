@@ -23,7 +23,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import me.liujia95.biliplayer.R;
 import me.liujia95.biliplayer.base.BaseActivity;
-import me.liujia95.biliplayer.base.BaseFragment;
+import me.liujia95.biliplayer.base.ParentFragment;
 import me.liujia95.biliplayer.fragment.FaxianFragment;
 import me.liujia95.biliplayer.fragment.FenquFragment;
 import me.liujia95.biliplayer.fragment.PanJuFragment;
@@ -42,7 +42,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
 
     private String[] mTabsArray;
 
-    List<BaseFragment> mFragments;
+    List<ParentFragment> mFragments;
     private ActionBarDrawerToggle mToggle;
 
 

@@ -16,6 +16,8 @@ public abstract class BaseFragment extends ParentFragment {
 
     private LoadingUI mLoadingUI;
 
+    public void test(){}
+
     @Override
     protected View initView(LayoutInflater inflater) {
         if (mLoadingUI == null)

@@ -31,6 +31,7 @@ public abstract class ParentFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         initData();
         initListener();
+        loadData();
         super.onActivityCreated(savedInstanceState);
     }
 
@@ -40,6 +41,10 @@ public abstract class ParentFragment extends Fragment {
      * @des 初始化view，需要子类复写
      */
     protected abstract View initView(LayoutInflater inflater);
+
+    public void loadData() {
+
+    }
 
     /**
      * @des 初始化数据

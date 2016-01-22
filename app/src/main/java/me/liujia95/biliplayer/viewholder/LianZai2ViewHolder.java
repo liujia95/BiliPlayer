@@ -5,17 +5,18 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.lidroid.xutils.BitmapUtils;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import me.liujia95.biliplayer.R;
 import me.liujia95.biliplayer.bean.LianZaiBean;
-import me.liujia95.biliplayer.bean.VideoInfoBean;
+import me.liujia95.biliplayer.utils.UIUtils;
 
 /**
  * Created by Administrator on 2016/1/10 15:03.
  */
-public class LianZaiViewHolder extends RecyclerView.ViewHolder {
-
+public class LianZai2ViewHolder extends RecyclerView.ViewHolder {
 
     @InjectView(R.id.item_lianzai_icon)
     ImageView mIcon;
@@ -37,28 +38,26 @@ public class LianZaiViewHolder extends RecyclerView.ViewHolder {
     TextView  mNumber2;
     @InjectView(R.id.item_lianzai_date2)
     TextView  mDate2;
+    private final BitmapUtils mBitmapUtils;
 
-    private LianZaiBean mLianZaiBean;
-
-    public LianZaiViewHolder(View parent) {
+    public LianZai2ViewHolder(View parent) {
         super(parent);
         ButterKnife.inject(this, parent);
-
-
+        mBitmapUtils = new BitmapUtils(UIUtils.getContext());
     }
 
-    public void loadData(VideoInfoBean bean) {
 
-        mIcon.setImageResource(bean.icon1);
-        mSeenum.setText(bean.seeNum1);
-        mTitle.setText(bean.title1);
-        mNumber.setText(bean.number1);
-        mDate.setText(bean.date1);
+    public void loadData(LianZaiBean bean) {
+        mBitmapUtils.display(mIcon, bean.pic);
+        mSeenum.setText(bean.seeNum);
+        mTitle.setText(bean.title);
+        mNumber.setText(bean.number);
+        mDate.setText(bean.data);
 
-        mIcon2.setImageResource(bean.icon2);
+        mBitmapUtils.display(mIcon2, bean.pic2);
         mSeenum2.setText(bean.seeNum2);
         mTitle2.setText(bean.title2);
         mNumber2.setText(bean.number2);
-        mDate2.setText(bean.date2);
+        mDate2.setText(bean.data2);
     }
 }

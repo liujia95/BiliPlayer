@@ -17,6 +17,7 @@ public class PanJuData {
         list.add(new VideoInfoBean(R.drawable.lianzai_01, "画江湖 之灵主", "第13话", "上周六", "1074人在看", R.drawable.lianzai_02, "游戏王 重制版 决斗这王国", "第1话", "上周六", "1074人在看"));
         list.add(new VideoInfoBean(R.drawable.lianzai_03, "爱神巧克力", "第2话", "上周六", "1074人在看", R.drawable.lianzai_04, "我们这一家 新篇", "第1话", "上周六", "1074人在看"));
         list.add(new VideoInfoBean(R.drawable.lianzai_05, "动画锻炼！EX", "第3话", "上周六", "1074人在看", R.drawable.lianzai_06, "高中女生给你做饭了", "第1话", "上周六", "1074人在看"));
+        list.add(new VideoInfoBean(R.drawable.lianzai_05, "动画锻炼！EX", "第3话", "上周六", "1074人在看", R.drawable.lianzai_06, "高中女生给你做饭了", "第1话", "上周六", "1074人在看"));
 
         list.add(new VideoInfoBean(R.drawable.ic_wanjie, "完结动画"));
         list.add(new VideoInfoBean(R.drawable.wanjie_01, "恶棍之家 第六季", "12话全", R.drawable.wanjie_02, "恶棍之家 第五季", "18话全", R.drawable.wanjie_03, "恶棍之家 第四季", "28话全", 0.768f));
@@ -59,4 +60,9 @@ public class PanJuData {
         return list;
     }
 
+    public static List<VideoInfoBean> createTitles() {
+        List<VideoInfoBean> list = new ArrayList<>();
+        list.add(new VideoInfoBean(R.drawable.ic_lianzai, "新番连载"));
+        return list;
+    }
 }

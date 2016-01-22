@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion "22.0.1"
+    compileSdkVersion 'Google Apis:Google Apis:22'
+    buildToolsVersion "23.0.0 rc3"
     dexOptions {
         javaMaxHeapSize "4g"
         preDexLibraries = false
@@ -25,12 +25,12 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:22.+'
     compile 'com.android.support:support-v4:22.2.1'
-    compile 'com.android.support:appcompat-v7:22.2.1'
-    compile 'com.android.support:recyclerview-v7:22.2.1'
-    compile 'com.android.support:cardview-v7:22.2.1'
     compile 'com.android.support:design:22.2.1'
-    compile 'com.google.code.gson:gson:2.2.4'
+    compile 'com.android.support:cardview-v7:22.2.1'
     compile 'com.jakewharton:butterknife:5.1.1'
+    compile 'com.android.support:recyclerview-v7:22.2.1'
+    compile 'com.google.code.gson:gson:2.2.4'
     compile 'com.jiechic.library:xUtils:2.6.14'
 }

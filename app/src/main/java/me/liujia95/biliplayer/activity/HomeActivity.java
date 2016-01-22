@@ -26,7 +26,9 @@ import me.liujia95.biliplayer.base.BaseActivity;
 import me.liujia95.biliplayer.base.ParentFragment;
 import me.liujia95.biliplayer.fragment.FaxianFragment;
 import me.liujia95.biliplayer.fragment.FenquFragment;
+import me.liujia95.biliplayer.fragment.PanJu2Fragment;
 import me.liujia95.biliplayer.fragment.PanJuFragment;
+import me.liujia95.biliplayer.utils.LogUtils;
 import me.liujia95.biliplayer.utils.UIUtils;
 
 public class HomeActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -52,11 +54,11 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         setContentView(R.layout.activity_home);
 
         ButterKnife.inject(this);
+        initListener();
+
         initToolbar();
         initDrawerLayout();
-        initListener();
         initData();
-
     }
 
     /**
@@ -87,6 +89,24 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
      * 初始化事件
      */
     private void initListener() {
+        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                ParentFragment fragment = mFragments.get(position);
+                fragment.loadData();
+                LogUtils.d("---(" + position + ")加载中......");
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
     /**
@@ -98,7 +118,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
 
         //添加fragment
         mFragments = new ArrayList<>();
-        mFragments.add(new PanJuFragment());
+        mFragments.add(new PanJu2Fragment());
         mFragments.add(new PanJuFragment());
         mFragments.add(new FenquFragment());
         mFragments.add(new PanJuFragment());
@@ -108,6 +128,10 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         //给viewpager设置适配器
         mViewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
         mTablayout.setupWithViewPager(mViewPager);
+
+        //因为viewpager初始化是不会走onPageSelected事件，要手动让它加载一次
+        mViewPager.setCurrentItem(1);
+        mViewPager.setCurrentItem(0);
     }
 
     @Override
